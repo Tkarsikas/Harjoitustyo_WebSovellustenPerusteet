@@ -1,0 +1,27 @@
+:root{
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --background-color: #201212;
+    --text-color: #b6b1b1;
+}
+html{
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container button{
+    background-color: var(--primary-color);
+    padding: 10px 20px;
+
+}
+
+.container button:hover{
+    background-color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.container #crypto{
+    
+}
+
