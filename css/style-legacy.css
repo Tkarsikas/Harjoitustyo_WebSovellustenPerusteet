@@ -1,0 +1,141 @@
+:root{
+    --primary-color: #eb1515;
+    --secondary-color: #22d46d;
+    --background-color: #afabab;
+    --dark-background-color: #000;
+
+    --text-color: #424242;
+    
+    --accent-color: #6D0509;
+    --general-margin: 1em;
+    --general-padding: 2em;
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+*,*::before, *::after {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+ul{
+    list-style-type: none;
+    
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+div#container {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: inherit;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+}
+
+header h1 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav{
+    display: inherit;
+    align-items: center;
+    border-top: 1px solid var(--dark-background-color);
+    border-bottom: 1px solid var(--dark-background-color);
+    height: 40px;
+}
+
+nav ul {
+    padding-left: calc(var(--general-padding)*4);
+}
+
+nav li {
+    display: inline-block;
+    width: 5em;
+    margin-right: var(--general-margin);
+}
+
+div#content {
+    display: inherit;
+}
+
+
+div#content section {
+    width: 80vw;
+    display: inherit;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 1px solid var(--primary-color);
+    margin: var(--general-margin);
+}
+
+div#content aside {
+    width: 20vw;
+}
+
+article {
+    flex: 100%;
+    
+}
+article input {
+    padding: calc(var(--general-padding)*0.3);
+    margin: var(--general-margin);
+}
+article div{
+    margin: var(--general-margin);
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+}
+article h2 {
+    margin: var(--general-margin);
+}
+article ul li {
+    margin: var(--general-margin);
+    line-height: 1.5;
+}
+
+article button{
+    padding: calc(var(--general-padding)*0.5);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+article button:hover {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    font-weight: bold;
+}
+
+aside {
+    padding: var(--general-padding);
+    padding-top: calc(var(--general-padding)*1.5);
+}
+
+footer{
+    background-color: var(--dark-background-color);
+    display: inherit;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    position: fixed;
+    bottom:0;
+    width: 100vw;
+}
+footer p {
+    color: var(te);
+}
