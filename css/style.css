@@ -211,6 +211,12 @@ footer p {
     color: var(--color-text-muted);
 }
 
+canvas {
+    width: 100%;
+    max-width: 600px;
+    max-height: calc(var(--sidebar-width)*2);
+}
+
 @media (max-width: 900px) {
     .content {
         flex-direction: column;
