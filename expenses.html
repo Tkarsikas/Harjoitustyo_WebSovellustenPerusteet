@@ -7,10 +7,47 @@
     <title>Expenses</title>
 </head>
 <body>
-    <div class="container">
-        <section>
-            <h1>Expenses</h1>
+  <div id="container">
+    <header>
+      <h1>Tämä on kuukausikulu laskentaa</h1>
+    </header>
+    <div class="content">
+        <section id="main">
+            <article>
+                <div>
+                    <h2>Budjetti: <span id="labelBalance">0</span> €</h2>
+                    <input type="number" id="textAmount" placeholder="Syötä kuukausi budjetti">
+                    <button id="addBtn">Lisää</button>
+                </div>
+            </article>
+            <article>
+                <div>
+                    <h2>Lisää kulu:</h2>
+                    <input type="number" id="textExpense" placeholder="Syötä kulu">
+                    <input type="text" id="explanation" placeholder="selite">
+                    <button id="expenseBtn">Lisää</button>    
+                </div>
+            </article>
+            <article>
+                <div>
+                    <h2>Kulut</h2>
+                        <ul id="list">
+
+                        </ul>
+                    <h2>kulut : <span id="expensesLabel">0</span> €</h2>
+                </div>
+            </article>
         </section>
+        <aside>
+            <p>Aside</p>
+        </aside>
     </div>
+    <footer>
+        <p>Footer</p>
+    </footer>
+  </div>
+
+<script src="./js/script.js"></script>
+
 </body>
 </html>
