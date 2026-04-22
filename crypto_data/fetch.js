@@ -1,5 +1,7 @@
 import fs from 'fs';
 
+
+
 async function fetchCryptoHistory() {
   const coins = ['bitcoin', 'ethereum'];
   const days = 365; // viimeiset 365 päivää
@@ -19,5 +21,7 @@ async function fetchCryptoHistory() {
   fs.writeFileSync('crypto_history.json', JSON.stringify(result, null, 2));
   console.log('Tiedosto crypto_history.json luotu onnistuneesti!');
 }
+
+
 
 fetchCryptoHistory();

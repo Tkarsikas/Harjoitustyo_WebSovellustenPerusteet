@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style-legacy.css">
     <title>Crypto</title>
 </head>
 <body>
@@ -12,14 +12,33 @@
         <header>
             <h1>Crytpo info</h1>
         </header>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./expenses.html">Expenses</a></li>
+                <li><a href="./crypto.html">Crypto</a></li>
+                <li><a href=""></a></li>
+            </ul>
+        </nav>
         <div class="content">
-            <article>
+            <form>
                 <div>
                     <h2>testi</h2>
-                    <canvas id="cryptoChart"></canvas>
+                    <div class="chart-wrap">
+                        <canvas id="btcChart"></canvas>
+                    </div>
+                    <div class="chart-wrap">
+                        <canvas id="ethChart"></canvas>
+                    </div>
                 </div>
-            </article>
+            </form>
+            <aside>
+                <p>Aside</p>
+            </aside>
         </div>
+        <footer>
+            <p>Footer</p>
+        </footer>
     </div>
     <script src="./js/crypto_chart.js"></script>
 </body>

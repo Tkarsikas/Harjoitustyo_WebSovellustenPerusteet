@@ -27,10 +27,6 @@
     box-sizing: border-box;
 }
 
-*::before,
-*::after {
-    box-sizing: border-box;
-}
 
 body {
     min-height: 100vh;
@@ -128,7 +124,7 @@ nav a:hover {
     width: var(--sidebar-width);
 }
 
-article {
+form {
     flex: 1 1 100%;
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
@@ -137,7 +133,7 @@ article {
     padding: var(--space-4);
 }
 
-article input {
+form input {
     width: 100%;
     max-width: 24rem;
     padding: var(--space-2) var(--space-3);
@@ -148,7 +144,7 @@ article input {
     color: var(--color-text);
 }
 
-article div {
+form div {
     margin: 0;
     padding: 0;
     border: 0;
@@ -156,18 +152,25 @@ article div {
     background: transparent;
 }
 
-article h2 {
+form h2 {
     margin-bottom: var(--space-3);
 }
 
-article ul li {
+form ul li {
     margin: 0 0 var(--space-2);
     line-height: 1.5;
     padding-bottom: var(--space-2);
     border-bottom: 1px dashed var(--color-border);
 }
 
-article button {
+ul#list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+}
+
+form button {
     padding: var(--space-2) var(--space-4);
     background-color: var(--color-primary);
     color: var(--color-on-dark);
@@ -177,10 +180,19 @@ article button {
     transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-article button:hover {
+form button:hover {
     background-color: var(--color-accent);
     color: var(--color-on-dark);
     transform: translateY(-1px);
+}
+
+ul#list button {
+    margin-left: auto;
+    flex: 0 0 auto;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+    line-height: 1;
+    border-radius: 999px;
 }
 
 aside {
@@ -215,6 +227,25 @@ canvas {
     width: 100%;
     max-width: 600px;
     max-height: calc(var(--sidebar-width)*2);
+}
+
+.chart-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: clamp(260px, 38vh, 420px);
+    margin-bottom: var(--space-3);
+}
+
+.chart-wrap:last-child {
+    margin-bottom: 0;
+}
+
+.chart-wrap canvas {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none;
+    max-height: none;
 }
 
 @media (max-width: 900px) {
