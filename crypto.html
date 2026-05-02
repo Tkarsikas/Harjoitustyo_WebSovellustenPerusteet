@@ -1,45 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<html lang="fi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style-legacy.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Crypto</title>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Crytpo info</h1>
-        </header>
-        <nav>
-            <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./expenses.html">Expenses</a></li>
-                <li><a href="./crypto.html">Crypto</a></li>
-                <li><a href=""></a></li>
-            </ul>
-        </nav>
-        <div class="content">
-            <form>
-                <div>
-                    <h2>testi</h2>
-                    <div class="chart-wrap">
-                        <canvas id="btcChart"></canvas>
-                    </div>
-                    <div class="chart-wrap">
-                        <canvas id="ethChart"></canvas>
-                    </div>
-                </div>
-            </form>
-            <aside>
-                <p>Aside</p>
-            </aside>
-        </div>
-        <footer>
-            <p>Footer</p>
-        </footer>
-    </div>
+    <header>
+        <h1>Crytpo info</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./expenses.html">Expenses</a></li>
+            <li><a href="./crypto.html">Crypto</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="main">
+            <h2>testi</h2>
+            <div class="chart-wrap">
+                <canvas id="btcChart"></canvas>
+            </div>
+            <div class="chart-wrap">
+                <canvas id="ethChart"></canvas>
+            </div>
+        </section>
+        <aside id="sidebar">
+            <h3>Vinkki</h3>
+            <p>Tässä osiossa voit tarkastella viimeisen vuoden ajalta Bitcoinin ja Etheriumin arvon kehitystä</p>
+        </aside>
+    </main>
+
+    <footer>
+        <p>Footer</p>
+    </footer>
+
     <script src="./js/crypto_chart.js"></script>
 </body>
 </html>
