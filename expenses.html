@@ -1,61 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style-legacy.css">
-    <title>Expenses</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Expenses - Kulujen hallinta</title>
 </head>
 <body>
-  <div id="container">
     <header>
-      <h1>Tämä on kuukausikulu laskentaa</h1>
+        <h1>Kuukausikulujen laskenta</h1>
     </header>
     <nav>
         <ul>
             <li><a href="./index.html">Home</a></li>
             <li><a href="./expenses.html">Expenses</a></li>
             <li><a href="./crypto.html">Crypto</a></li>
-            <li><a href=""></a></li>
         </ul>
     </nav>
-    <div class="content">
+    <main>
         <section id="main">
+            <h2>Budjetti: <span id="labelBalance">0</span> €</h2>
             <form>
-                <div>
-                    <h2>Budjetti: <span id="labelBalance">0</span> €</h2>
-                    <input type="number" id="textAmount" placeholder="Syötä kuukausi budjetti">
-                    <button type="button" id="addBtn">Lisää</button>
+                <div class="form-group">
+                    <label for="textAmount">Syötä kuukauden budjetti:</label>
+                    <input type="number" id="textAmount" placeholder="Esim. 1000">
+                    <button type="button" id="addBtn">Lisää budjetti</button>
                 </div>
             </form>
+            <h2>Lisää kulu:</h2>    
             <form>
-                <div>
-                    <h2>Lisää kulu:</h2>
-                    <input type="number" id="textExpense" placeholder="Syötä kulu">
-                    <input type="text" id="explanation" placeholder="selite">
-                    <button type="submit" id="expenseBtn">Lisää</button>    
+                <div class="form-group">
+                    <label for="textExpense">Kulun määrä (€):</label>
+                    <input type="number" id="textExpense" placeholder="Esim. 50">
                 </div>
+                <div class="form-group">
+                    <label for="explanation">Kuvaus:</label>
+                    <input type="text" id="explanation" placeholder="Esim. Ruokakauppa">
+                </div>
+                <button type="submit" id="expenseBtn">Lisää kulu</button>
             </form>
+            <h2>Kulut yhteensä: <span id="expensesLabel">0</span> €</h2>
+            <h3>Kulujen lista:</h3>
+            <ul id="list" aria-label="Kulujen lista">
+            </ul>
             <form>
-                <div>
-                    <h2>Kulut</h2>
-                        <ul id="list">
-                            
-                        </ul>
-                    <h2>kulut : <span id="expensesLabel">0</span> €</h2>
-                </div>
+            <button type="button" id="resetStorage">nollaa muisti</button>
             </form>
         </section>
-        <aside>
-            <p>Aside</p>
+        <aside id="sidebar">
+            <h3>Vinkki</h3>
+            <p>Tässä osiossa voit hallita kuukausikulujasi. Aseta ensin budjetti, lisää sitten kulut ja seuraa, kuinka paljon rahaa jää käyttämättä.</p>
         </aside>
-    </div>
+    </main>
+
     <footer>
-        <p>Footer</p>
+        <p>&copy; 2026 Kulujen hallinta -sovellus</p>
     </footer>
-  </div>
-
-<script src="./js/script.js"></script>
-
+<script src="./js/expenseScript.js"></script>
 </body>
 </html>
