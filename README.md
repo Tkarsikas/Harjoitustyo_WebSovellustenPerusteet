@@ -7,6 +7,8 @@ Käytetyt kielet: HTML, CSS, JavaScript
 
 Kirjastot: Chart.js
 
+Tehtävä on tehty harjoitus/opiskelu mielessä ja toteutuksessa on hyödynnetty sekä tekoälyä, että muita lähteitä.
+
 ## Kansiorakenne
 
 ```text
