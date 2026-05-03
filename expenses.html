@@ -12,9 +12,9 @@
     </header>
     <nav>
         <ul>
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./expenses.html">Expenses</a></li>
-            <li><a href="./crypto.html">Crypto</a></li>
+            <li><a href="./index.html">Koti</a></li>
+            <li><a href="./expenses.html">Kulu laskenta</a></li>
+            <li><a href="./crypto.html">Kryptot</a></li>
         </ul>
     </nav>
     <main>
@@ -23,7 +23,7 @@
             <form>
                 <div class="form-group">
                     <label for="textAmount">Syötä kuukauden budjetti:</label>
-                    <input type="number" id="textAmount" placeholder="Esim. 1000">
+                    <input type="number" id="textAmount" placeholder="Esim. 1000" min="0">
                     <button type="button" id="addBtn">Lisää budjetti</button>
                 </div>
             </form>
@@ -31,7 +31,7 @@
             <form>
                 <div class="form-group">
                     <label for="textExpense">Kulun määrä (€):</label>
-                    <input type="number" id="textExpense" placeholder="Esim. 50">
+                    <input type="number" id="textExpense" placeholder="Esim. 50" min="1">
                 </div>
                 <div class="form-group">
                     <label for="explanation">Kuvaus:</label>
@@ -44,7 +44,7 @@
             <ul id="list" aria-label="Kulujen lista">
             </ul>
             <form>
-            <button type="button" id="resetStorage">nollaa muisti</button>
+            <button type="button" id="resetStorage" hidden>Nollaa muisti</button>
             </form>
         </section>
         <aside id="sidebar">
@@ -54,7 +54,13 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Kulujen hallinta -sovellus</p>
+        <nav>
+            <a href="./index.html">Koti</a>
+            <a href="./expenses.html">Kulu laskenta</a>
+            <a href="./crypto.html">Kryptot</a>
+        </nav>
+        <p>Tekijä: Tommi Karsikas</p>
+        <p>&copy; 2026 Harjoitustyö</p>
     </footer>
 <script src="./js/expenseScript.js"></script>
 </body>
