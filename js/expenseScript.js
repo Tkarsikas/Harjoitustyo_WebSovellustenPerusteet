@@ -12,12 +12,18 @@ const reset_element_btn = document.querySelector("#resetStorage")
 
 const STORAGE_KEY = "expensesAppState";
 
+let totalBudget = 0
 let totalBalance = 0
 let totalExpenses = 0
 let expensesList = [];
 
+const updateBalance = () => {
+    totalBalance = totalBudget - totalExpenses
+}
+
 const saveState = () => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        totalBudget,
         totalBalance,
         totalExpenses,
         expensesList
@@ -31,9 +37,10 @@ const loadState = () => {
         return
     }
     const state = JSON.parse(rawState)
-    totalBalance = state.totalBalance
-    totalExpenses = state.totalExpenses
-    expensesList = state.expensesList
+    totalBudget = state.totalBudget ?? (state.totalBalance ?? 0) + (state.totalExpenses ?? 0)
+    totalExpenses = state.totalExpenses ?? 0
+    expensesList = state.expensesList ?? []
+    updateBalance()
 }
 
 const renderState = () => {
@@ -53,14 +60,14 @@ const renderState = () => {
         button.textContent = "X"
 
         button.addEventListener("click", () => {
-            totalBalance += expense.value
             totalExpenses -= expense.value
             expensesList = expensesList.filter((item) => item.id !== expense.id)
+            updateBalance()
             saveState()
             renderState()
         })
 
-        
+        reset_element_btn.hidden = false
         li.appendChild(button)
         li.appendChild(text)
         expense_element_list.appendChild(li)
@@ -74,16 +81,25 @@ const renderState = () => {
 
 const setBalance = () => {
     const input = Number(balance_element_input.value)
-    totalBalance = input
+    if(Number.isNaN(input) || input < 0){
+        alert("budjetin täytyy olla positiivinen")
+    }else {
+    totalBudget = input
     balance_element_input.value = ""
+    updateBalance()
+    }
+
 }
 
 const addExpense = () => {
     const explanation = expense_element_explanation.value
-    const value = Number(expense_element_amount.value)
-
-    totalBalance -= value
+    let value = Number(expense_element_amount.value)
+    if(Number.isNaN(value) || value < 0){
+        value = 0
+        alert("kulun täytyy olla positiivinen")
+    }
     totalExpenses += value
+    updateBalance()
 
     expensesList.push({
         id: Date.now(),
@@ -93,16 +109,18 @@ const addExpense = () => {
 
     expense_element_amount.value = ""
     expense_element_explanation.value = ""
-    expense_element_amount.focus()
+    expense_element_amount.focus() 
 }
 
 const resetLocalstorage = () => {
+    totalBudget = 0
     totalBalance = 0
     totalExpenses = 0
     expensesList = []
 
     saveState()
     renderState()
+    reset_element_btn.hidden = true
 }
 
 if (reset_element_btn) {
@@ -127,5 +145,6 @@ balance_element_btn.addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", () => {
     loadState()
     renderState()
+    
 })
 
