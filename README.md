@@ -51,7 +51,7 @@ Logiikka tallentaa LocalStorageen vuoden datan, josta kuvaajat piirretään. Kun
 
 Voit liikutella kursoria kuvaajan päällä, josta näet tarkemmin kursorin kohdalta tarkan hinnan ja päivämäärän.
 
-Krypto data haetaan coingeko rajapinnasta.
+Krypto data haetaan coingeko avoimesta rajapinnasta.
 
 ## Kululaskenta sivuston toiminta
 Kululaskentasivulla voit seurata esimerkiksi kuukausibudjettia. Voit lisätä budjetin, lisätä kuluja eri selityksillä ja sovellus laskee budjetin automaattisesti. Voit myös poistaa kuluja tai muuttaa budjettia niin, että ohjelma huomioi muutokset.
