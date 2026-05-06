@@ -2,6 +2,7 @@
 const CACHE_KEY = "cryptoHistoryCache";
 const CACHE_TIME_KEY = "cryptoHistoryCacheTime";
 const UPDATE_INTERVAL_MS = 6 * 60 * 60 * 1000; // 6h
+const chartInstances = {};
 
 function isNormalizedHistory(data) {
   return Array.isArray(data) && data.every((row) => (
@@ -90,122 +91,92 @@ async function loadDataSmart() {
   }
 }
 
+
+function createChart(ctx, label, data, color, title) {
+  const canvasId = ctx.canvas.id;
+
+  if (chartInstances[canvasId]) {
+    chartInstances[canvasId].destroy();
+  }
+
+  const chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: data.labels,
+      datasets: [{
+        label: label,
+        data: data.values,
+        borderColor: color,
+        fill: false
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: {
+        mode: 'index',
+        intersect: false,
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: title
+        }
+      },
+      scales: {
+        x: {
+          display: true,
+          title: {
+            display: true,
+            text: 'Päivämäärä'
+          }
+        },
+        y: {
+          display: true,
+          title: {
+            display: true,
+            text: 'Hinta (USD)'
+          }
+        }
+      }
+    }
+  });
+
+  chartInstances[canvasId] = chart;
+  return chart;
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
   const data = await loadDataSmart();
   if (!data) return;
-  // piirrä chart tästä datasta
-  drawCharts(data);
-});
-
-function drawCharts(data) {
   if (!isNormalizedHistory(data) || data.length === 0) {
-    console.error("Kaaviodata puuttuu tai on väärässä muodossa.");
-    return;
-  }
-
-  // Luodaan graafille tarvittavat taulukot
-  const labels = data.map(d => d.date); // päivämäärät X-akselille
-  const btcPrices = data.map(d => d.btc);
-  const ethPrices = data.map(d => d.eth);
-
-  const btcCanvas = document.getElementById('btcChart');
-  const ethCanvas = document.getElementById('ethChart');
-
-  if (!btcCanvas || !ethCanvas) {
-    console.error("Canvas-elements not found");
-    return;
-  }
-
-  const ctxbtc = btcCanvas.getContext('2d');
-  const ctxeth = ethCanvas.getContext('2d');
-
-  new Chart(ctxbtc, {
-    type: 'line',
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: 'Bitcoin (BTC)',
-          data: btcPrices,
-          borderColor: 'yellow',
-          fill: false,
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      interaction: {
-        mode: 'index',
-        intersect: false,
-      },
-      plugins: {
-        title: {
-          display: true,
-          text: 'Bitcoin hinnat viimeisen vuoden aikana'
-        }
-      },
-      scales: {
-        x: {
-          display: true,
-          title: {
-            display: true,
-            text: 'Päivämäärä'
-          }
-        },
-        y: {
-          display: true,
-          title: {
-            display: true,
-            text: 'Hinta (USD)'
-          }
-        }
-      }
+      console.error("Kaaviodata puuttuu tai on väärässä muodossa.");
+      return;
     }
-  });
-
-  new Chart(ctxeth, {
-    type: 'line',
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: 'Ethereum (ETH)',
-          data: ethPrices,
-          borderColor: 'purple',
-          fill: false,
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      interaction: {
-        mode: 'index',
-        intersect: false,
-      },
-      plugins: {
-        title: {
-          display: true,
-          text: 'Ethereum hinnat viimeisen vuoden aikana'
-        }
-      },
-      scales: {
-        x: {
-          display: true,
-          title: {
-            display: true,
-            text: 'Päivämäärä'
-          }
-        },
-        y: {
-          display: true,
-          title: {
-            display: true,
-            text: 'Hinta (USD)'
-          }
-        }
-      }
+    // Luodaan graafille tarvittavat taulukot
+    const labels = data.map(d => d.date); // päivämäärät X-akselille
+    const btcPrices = data.map(d => d.btc);
+    const ethPrices = data.map(d => d.eth);
+    
+    const ethCanvas = document.getElementById('ethChart');
+    const btcCanvas = document.getElementById('btcChart');
+    
+    if (!btcCanvas || !ethCanvas) {
+      console.error("Canvas-elements not found");
+      return;
     }
-  });
-}
+
+    const ctxbtc = btcCanvas.getContext('2d');
+    const ctxeth = ethCanvas.getContext('2d');
+
+    createChart(ctxbtc, "Bitcoin (BTC)", {
+    labels: labels,
+    values: btcPrices
+  }, "yellow", "Bitcoin hinnat viimeisen vuoden aikana")
+
+  createChart(ctxeth, "Ethereum (ETH)", {
+    labels: labels,
+    values: ethPrices
+  }, "purple", "Ethereum hinnat viimeisen vuoden aikana")
+
+});
