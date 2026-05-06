@@ -249,6 +249,15 @@ footer nav a {
     font-size: 14px;
 }
 
+@media only screen and (max-width: 650px){
+    img {
+        width: 300px;
+        height: 300px;
+        align-self: center;
+    }
+
+}
+
 @media only screen and (min-width: 900px){
     main {
         flex-direction: row;
